@@ -5,11 +5,11 @@ defmodule Rumbl.Repo do
   In Memory Repository.
   """
   # def all(Rumbl.User) do
-  #     [%Rumbl.User{id: "1", name: "Arnold", username: "Mafferclamp", password: "password123"},
-  #      %Rumbl.User{id: "2", name: "Jenny", username: "Catscribbler", password: "TokyoFluff"},
-  #      %Rumbl.User{id: "3", name: "Jason", username: "Azn_dude", password: "yungyung"},
-  #      %Rumbl.User{id: "4", name: "Tokyo", username: "Hungry_Kitty", password: "feedmehoooman!"},
-  #      %Rumbl.User{id: "5", name: "Fluff", username: "Hairballz", password: "sleepykitty"}, ]
+  #     [%Rumbl.User{name: "Arnold", username: "Mafferclamp", password_hash: "password123"},
+  #      %Rumbl.User{name: "Jenny", username: "Catscribbler", password_hash: "TokyoFluff"},
+  #      %Rumbl.User{name: "Jason", username: "Azn_dude", password_hash: "yungyung"},
+  #      %Rumbl.User{name: "Tokyo", username: "Hungry_Kitty", password_hash: "feedmehoooman!"},
+  #      %Rumbl.User{name: "Fluff", username: "Hairballz", password_hash: "sleepykitty"}, ]
   # end
   # def all(_module), do: []
   #
