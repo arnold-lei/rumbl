@@ -21,12 +21,12 @@ defmodule Rumbl.User do
     def changeset(model, params \\ :empty) do
         model
         |> cast(params, ~w(name username), [])
-        |>validate_length(:username, min: 1, max: 20)
+        |> validate_length(:username, min: 1, max: 20)
     end
     defp put_pass_hash(changeset) do
         case changeset do
             %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
-                put_change(changeset, :password_has, Comeonin.Bcrypt.hashpwsalt(pass))
+                put_change(changeset, :password_hash, Comeonin.Bcrypt.hashpwsalt(pass))
             _->
                 changeset
         end
