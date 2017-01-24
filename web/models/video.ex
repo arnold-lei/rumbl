@@ -2,7 +2,9 @@ defmodule Rumbl.Video do
   use Rumbl.Web, :model
 
   schema "videos" do
+
     field :url, :string
+
     field :title, :string
     field :description, :string
     belongs_to :user, Rumbl.User
@@ -17,5 +19,6 @@ defmodule Rumbl.Video do
     struct
     |> cast(params, [:url, :title, :description])
     |> validate_required([:url, :title, :description])
+
   end
 end

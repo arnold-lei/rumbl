@@ -3,6 +3,7 @@ defmodule Rumbl.VideoControllerTest do
 
   alias Rumbl.Video
   @valid_attrs %{description: "some content", title: "some content", url: "some content"}
+
   @invalid_attrs %{}
 
   test "lists all entries on index", %{conn: conn} do

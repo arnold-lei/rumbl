@@ -8,8 +8,10 @@
   </li>
 
   <li>
+
     <strong>Url:</strong>
     <%= @video.url %>
+
   </li>
 
   <li>
