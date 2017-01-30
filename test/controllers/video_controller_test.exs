@@ -1,7 +1,7 @@
 defmodule Rumbl.VideoControllerTest do
     use Rumbl.ConnCase
 
-    test "requires user authentication on all actions" do
+    test "requires user authentication on all actions", %{conn: conn} do
         Enum.each([
             get(build_conn, video_path(build_conn, :new)),
             get(build_conn, video_path(build_conn, :index)),
@@ -16,15 +16,26 @@ defmodule Rumbl.VideoControllerTest do
         end)
     end
 
-    setup do
-        user = insert_user(username: "max")
-        conn = assign(conn(), :current_user, user)
-        {:ok, conn: user: user}
+    setup %{conn: conn} = config do
+        if username = config[:login_as] do
+            user = insert_user(username: username)
+            conn = assign(conn, :current_user, user)
+            {:ok, conn: conn, user: user}
+        else
+            :ok
+        end
     end
 
+    @tag login_as: "max"
     test "List all user's videos on index", %{conn: conn, user: user} do
         user_video = insert_video(user, title: "funny cats")
-        other_vide = insert_video(insert_user(username: "other"), title: "another video")
+        other_video = insert_video(insert_user(username: "other"), title: "another video")
+
+        conn = get conn, video_path(conn, :index)
+        assert html_response(conn, 200) =~ ~r/Listing videos/
+        assert String.contains?(conn.resp_body, user_video.title)
+        refute String.contains?(conn.resp_body, other_video.title)
+
     end
 
 
