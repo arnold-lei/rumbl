@@ -1,21 +1,6 @@
 defmodule Rumbl.VideoControllerTest do
     use Rumbl.ConnCase
 
-    test "requires user authentication on all actions", %{conn: conn} do
-        Enum.each([
-            get(build_conn, video_path(build_conn, :new)),
-            get(build_conn, video_path(build_conn, :index)),
-            get(build_conn, video_path(build_conn, :show, "123")),
-            get(build_conn, video_path(build_conn, :edit, "123")),
-            put(build_conn, video_path(build_conn, :update, "123", %{})),
-            post(build_conn, video_path(build_conn, :create, %{})),
-            delete(build_conn, video_path(build_conn, :delete, "123")),
-        ], fn conn ->
-            assert html_response(conn, 302)
-            assert conn.halted
-        end)
-    end
-
     setup %{conn: conn} = config do
         if username = config[:login_as] do
             user = insert_user(username: username)
@@ -38,5 +23,18 @@ defmodule Rumbl.VideoControllerTest do
 
     end
 
-
+    test "requires user authentication on all actions", %{conn: conn} do
+        Enum.each([
+            get(build_conn, video_path(build_conn, :new)),
+            get(build_conn, video_path(build_conn, :index)),
+            get(build_conn, video_path(build_conn, :show, "123")),
+            get(build_conn, video_path(build_conn, :edit, "123")),
+            put(build_conn, video_path(build_conn, :update, "123", %{})),
+            post(build_conn, video_path(build_conn, :create, %{})),
+            delete(build_conn, video_path(build_conn, :delete, "123")),
+        ], fn conn ->
+            assert html_response(conn, 302)
+            assert conn.halted
+        end)
+    end
 end
