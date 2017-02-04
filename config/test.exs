@@ -9,6 +9,7 @@ config :rumbl, Rumbl.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
+
 # Configure your database
 config :rumbl, Rumbl.Repo,
   adapter: Ecto.Adapters.Postgres,
@@ -17,3 +18,7 @@ config :rumbl, Rumbl.Repo,
   database: "rumbl_dev",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+#Bycrypt config for fewer hash cycles
+config :comeonin, :bcrypt_log_rounds, 4
+config :comeonin, :pbkdf2_rounds, 1
