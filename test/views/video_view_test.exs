@@ -7,7 +7,7 @@ defmodule Rumbl.VideoViewTest do
                    %Rumbl.Video{id: "1", title: "dogs"},]
         content = render_to_string(Rumbl.VideoView, "index.html", conn: conn, videos: videos)
         assert String.contains?(content, "Listing videos")
-        for vide0 <- videos do
+        for video <- videos do
             assert String.contains?(content, video.title)
         end
     end
