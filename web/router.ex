@@ -21,6 +21,7 @@ defmodule Rumbl.Router do
 
     get "/users/:id", UserController, :show
     get "/", PageController, :index
+    get "/watch/:id", WatchController, :show
   end
 
   scope "/manage", Rumbl do
