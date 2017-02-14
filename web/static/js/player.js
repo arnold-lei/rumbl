@@ -5,9 +5,9 @@ let Player = {
         window.onYouTubeIframeAPIRead = () => {
             this.onIframeReady(domId, playerId, onReady)
         }
-        let youtubeScriptTag = document.createElemenct("script")
+        let youtubeScriptTag = document.createElement("script")
         youtubeScriptTag.src = "//www.youtube.com/iframe_api"
-        document.head.appendChild(youtubeScripptTag)
+        document.head.appendChild(youtubeScriptTag)
     },
     onIframeReady(domId, playerId, onReady){
         this.player = new YT.Player(domId, {
