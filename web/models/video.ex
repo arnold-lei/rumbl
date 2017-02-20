@@ -31,4 +31,9 @@ defmodule Rumbl.Video do
           changeset
       end
   end
+  defp slugify(str) do
+      str
+      |> String.downcase()
+      |> String.replace(~r/[^\w-]+/u, "-")
+  end
 end
